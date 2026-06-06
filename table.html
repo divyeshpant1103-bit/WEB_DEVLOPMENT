@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tables</title>
+  </head>
+
+  <body>
+
+    <!-- ============================================================
+         TABLE 1: STUDENT RECORDS TABLE
+         Demonstrates: rowspan — merging cells vertically across rows
+         ============================================================ -->
+    <table border="1">
+
+      <!-- thead: Table header section — defines column labels -->
+      <thead>
+        <th>Student ID</th>
+        <th>Student Name</th>
+        <th>Gender</th>
+        <th>Age</th>
+      </thead>
+
+      <!-- tbody: Table body section — contains the actual data rows -->
+      <tbody>
+
+        <!-- Row 1: Normal row — all 4 cells present individually -->
+        <tr>
+          <td>1234</td>
+          <td>Bill</td>
+          <td>Male</td>
+          <td>17</td>
+        </tr>
+
+        <!-- Row 2: Uses rowspan="3" on the Age cell.
+             This single <td> stretches vertically to cover Rows 2, 3, and 4.
+             So Rows 3 and 4 must NOT include an <td> for Age column. -->
+        <tr>
+          <td>1234</td>
+          <td>Divyesh</td>
+          <td>Male</td>
+          <td rowspan="3">19</td> <!-- Spans this row + 2 more rows below -->
+        </tr>
+
+        <!-- Row 3: Age cell is OMITTED — it's already occupied by rowspan above -->
+        <tr>
+          <td>1234</td>
+          <td>Bill</td>
+          <td>Male</td>
+          <!-- No <td> for Age here — rowspan from Row 2 covers it -->
+        </tr>
+
+        <!-- Row 4: Age cell is OMITTED — still covered by rowspan from Row 2 -->
+        <tr>
+          <td>1234</td>
+          <td>Bill</td>
+          <td>Male</td>
+          <!-- No <td> for Age here — rowspan from Row 2 covers it -->
+        </tr>
+
+      </tbody>
+    </table>
+
+    <br><br>
+
+    <!-- ============================================================
+         TABLE 2: ROWSPAN + COLSPAN DEMO
+         Demonstrates: both rowspan (vertical merge) and colspan (horizontal merge)
+         ============================================================ -->
+    <table border="1">
+
+      <!-- 3-column header -->
+      <thead>
+        <th>Column 1</th>
+        <th>Column 2</th>
+        <th>Column 3</th>
+      </thead>
+
+      <tbody>
+
+        <!-- Row 1: Column 1 cell uses rowspan="2", meaning it covers Row 1 AND Row 2.
+             Columns 2 and 3 are normal cells. -->
+        <tr>
+          <td rowspan="2">Row 1 Cell 1</td> <!-- Stretches down into Row 2 -->
+          <td>Row 1 Cell 2</td>
+          <td>Row 1 Cell 3</td>
+        </tr>
+
+        <!-- Row 2: Column 1 is OMITTED — already occupied by rowspan above.
+             Only Columns 2 and 3 need their own <td>. -->
+        <tr>
+          <!-- No <td> for Column 1 — covered by rowspan from Row 1 -->
+          <td>Row 2 Cell 2</td>
+          <td>Row 2 Cell 3</td>
+        </tr>
+
+        <!-- Row 3: colspan="3" makes this single cell stretch across all 3 columns.
+             No other <td> needed in this row. -->
+        <tr>
+          <td colspan="3">Row 3 Cell 1 (Spans 3 Columns)</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <br><br>
+
+    <!-- ============================================================
+         TABLE 3: EMPLOYEE SALARY TABLE WITH FOOTER
+         Demonstrates: rowspan in tbody, tfoot section, colspan in footer
+         ============================================================ -->
+    <table border="1">
+
+      <!-- 5-column header -->
+      <thead>
+        <th>No.</th>
+        <th>Full Name</th>
+        <th>Position</th>
+        <th>Salary</th>
+        <th>Type</th>
+      </thead>
+
+      <tbody>
+
+        <!-- Row 1: The "Type" cell uses rowspan="4" — it spans all 4 employee rows.
+             This groups all 4 founders under the label "Company Founder". -->
+        <tr>
+          <td>1</td>
+          <td>Bill Gates</td>
+          <td>Founder Microsoft</td>
+          <td>$1000</td>
+          <td rowspan="4">Company Founder</td> <!-- Covers Rows 1 through 4 -->
+        </tr>
+
+        <!-- Rows 2–4: "Type" column is OMITTED — occupied by rowspan above -->
+        <tr>
+          <td>2</td>
+          <td>Steve Jobs</td>
+          <td>Founder Apple</td>
+          <td>$1200</td>
+          <!-- No <td> for Type — covered by rowspan -->
+        </tr>
+
+        <tr>
+          <td>3</td>
+          <td>Larry Page</td>
+          <td>Founder Google</td>
+          <td>$1400</td>
+          <!-- No <td> for Type — covered by rowspan -->
+        </tr>
+
+        <tr>
+          <td>4</td>
+          <td>Mark Zuckerberg</td>
+          <td>Founder Facebook</td>
+          <td>$1100</td>
+          <!-- No <td> for Type — covered by rowspan -->
+        </tr>
+
+      </tbody>
+
+      <!-- tfoot: Table footer — typically used for summaries or totals.
+           Renders at the bottom of the table. -->
+      <tfoot>
+        <tr>
+          <!-- colspan="3" merges the first 3 columns (No., Full Name, Position)
+               into one wide label cell for the total row. -->
+          <td colspan="3">Total Expenses</td>
+          <td>$4600</td>
+          <!-- Note: The 5th column (Type) has no footer cell here,
+               which leaves it visually empty in the footer row. -->
+        </tr>
+      </tfoot>
+
+    </table>
+
+    <br><br>
+
+    <!-- ============================================================
+         TABLE 4: GEOGRAPHIC / POPULATION TABLE
+         Demonstrates: nested rowspans across multiple levels —
+         Country > State > City > Street
+         ============================================================ -->
+    <table border="1">
+
+      <!-- 7-column header for location + demographic breakdown -->
+      <thead>
+        <th>Country</th>
+        <th>State</th>
+        <th>City</th>
+        <th>Street</th>
+        <th>Male</th>
+        <th>Female</th>
+        <th>Others</th>
+      </thead>
+
+      <tbody>
+
+        <!-- ---- COUNTRY 1: India (implied) — spans 8 rows total ---- -->
+
+        <!-- Row 1: Country rowspan=8 (covers all 8 India rows)
+                    State "Kerala" rowspan=4 (covers rows 1–4)
+                    City "Cochin" rowspan=2 (covers rows 1–2) -->
+        <tr>
+          <td rowspan="8">1</td>        <!-- Country: spans rows 1–8 -->
+          <td rowspan="4">Kerala</td>   <!-- State: spans rows 1–4 -->
+          <td rowspan="2">Cochin</td>   <!-- City: spans rows 1–2 -->
+          <td>Newstreet</td>
+          <td>500</td>
+          <td>600</td>
+          <td>6</td>
+        </tr>
+
+        <!-- Row 2: Country, State, City all omitted (covered by rowspans above) -->
+        <tr>
+          <td>Newstreet</td>
+          <td>500</td>
+          <td>600</td>
+          <td>6</td>
+        </tr>
+
+        <!-- Row 3: Country omitted, State omitted
+                    City "Trivandrum" rowspan=2 (covers rows 3–4) -->
+        <tr>
+          <td rowspan="2">Trivandrum</td> <!-- New city, spans rows 3–4 -->
+          <td>Newstreet</td>
+          <td>500</td>
+          <td>600</td>
+          <td>6</td>
+        </tr>
+
+        <!-- Row 4: Country, State, City all omitted -->
+        <tr>
+          <td>Newstreet</td>
+          <td>500</td>
+          <td>600</td>
+          <td>6</td>
+        </tr>
+
+        <!-- Row 5: Country omitted (rowspan continues)
+                    State "Maharashtra" rowspan=4 (covers rows 5–8)
+                    City "Mumbai" rowspan=2 (covers rows 5–6) -->
+        <tr>
+          <td rowspan="4">Maharashtra</td> <!-- New state, spans rows 5–8 -->
+          <td rowspan="2">Mumbai</td>       <!-- New city, spans rows 5–6 -->
+          <td>Newstreet</td>
+          <td>500</td>
+          <td>600</td>
+          <td>6</td>
+        </tr>
+
+        <!-- Row 6: Country, State, City all omitted -->
+        <tr>
+          <td>Newstreet</td>
+          <td>500</td>
+          <td>600</td>
+          <td>6</td>
+        </tr>
+
+        <!-- Row 7: Country, State omitted
+                    City "Surat" rowspan=2 (covers rows 7–8) -->
+        <tr>
+          <td rowspan="2">Surat</td> <!-- New city, spans rows 7–8 -->
+          <td>Newstreet</td>
+          <td>500</td>
+          <td>600</td>
+          <td>6</td>
+        </tr>
+
+        <!-- Row 8: Country, State, City all omitted -->
+        <tr>
+          <td>Newstreet</td>
+          <td>500</td>
+          <td>600</td>
+          <td>6</td>
+        </tr>
+
+        <!-- ---- COUNTRY 2: USA — spans 2 rows ---- -->
+
+        <!-- Row 9: Country "2" rowspan=2, State "Alaska" rowspan=2,
+                    City "AKA Central" rowspan=2 -->
+        <tr>
+          <td rowspan="2">2</td>              <!-- Country: spans rows 9–10 -->
+          <td rowspan="2">Alaska</td>         <!-- State: spans rows 9–10 -->
+          <td rowspan="2">AKA Central</td>    <!-- City: spans rows 9–10 -->
+          <td>Newstreet</td>
+          <td>500</td>
+          <td>600</td>
+          <td>6</td>
+        </tr>
+
+        <!-- Row 10: Country, State, City all omitted -->
+        <tr>
+          <td>Newstreet</td>
+          <td>500</td>
+          <td>600</td>
+          <td>6</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+  </body>
+</html>

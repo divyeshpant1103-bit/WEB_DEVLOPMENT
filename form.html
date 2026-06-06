@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms</title>
+</head>
+<body>
+
+  <!-- ============================================================
+       WHAT IS A FORM?
+       <form> is used to collect user input and send it to a server.
+       Key attributes:
+         action="url"   → where to send the data (defaults to same page)
+         method="get"   → data sent in URL (visible, for searching/filtering)
+         method="post"  → data sent in request body (secure, for login/signup)
+  ============================================================ -->
+
+
+  <!-- ============================================================
+       FORM 1: BASIC LOGIN FORM
+       Demonstrates: text input, password input, submit button, <button>
+  ============================================================ -->
+  <form action="#" method="post">
+
+    <!-- label: Describes what the input is for.
+         The "for" attribute must match the input's "id" so clicking
+         the label also focuses/activates the input field. -->
+    <label for="email">Email ID</label>
+
+    <!-- type="email": Validates that input looks like an email address.
+         placeholder: Grey hint text shown when the field is empty.
+         name: The key used when form data is submitted (e.g. name="email"). -->
+    <input type="email" id="email" name="email" placeholder="divyeshp@example.com">
+    <br><br>
+
+    <label for="password">Password</label>
+
+    <!-- type="password": Hides characters as the user types (shows dots/asterisks).
+         NOTE: There was a bug in the original — label said "password " (extra space),
+         which broke the label-input link. Fixed here. -->
+    <input type="password" id="password" name="password" placeholder="Enter your password">
+    <br><br>
+
+    <!-- type="submit": A button that submits the form data to the server.
+         "value" sets the text shown on the button. -->
+    <input type="submit" value="Submit via Input">
+
+    <!-- <button> inside a form also submits by default (type="submit").
+         Difference from <input type="submit">: <button> can contain HTML (icons, etc.)
+         To prevent auto-submission, use type="button". -->
+    <button type="submit">Submit via Button</button>
+
+  </form>
+
+  <br><br><br><br>
+
+  <!-- ============================================================
+       FORM 2: COMPREHENSIVE FORM — ALL MAJOR INPUT TYPES
+       Demonstrates: fieldset, legend, date, select (single + multiple),
+       textarea, and every common input type.
+  ============================================================ -->
+  <form action="#" method="post">
+
+    <!-- fieldset: Groups related form controls together visually (draws a box).
+         Useful for organizing large forms into logical sections. -->
+    <fieldset>
+
+      <!-- legend: The title/label displayed at the top of the fieldset box. -->
+      <legend>HTML Form — All Input Types</legend>
+
+
+      <!-- ── TEXT INPUTS ─────────────────────────────────────────── -->
+
+      <!-- type="text": Single-line plain text input. Most generic type. -->
+      <label for="username">Username (type="text"):</label>
+      <input type="text" id="username" name="username" placeholder="divyesh123">
+      <br><br>
+
+      <!-- type="email": Validates email format (must contain @ and domain). -->
+      <label for="email2">Email (type="email"):</label>
+      <input type="email" id="email2" name="email2" placeholder="you@example.com">
+      <br><br>
+
+      <!-- type="password": Masks input characters for sensitive data. -->
+      <label for="pass2">Password (type="password"):</label>
+      <input type="password" id="pass2" name="pass2" placeholder="••••••••">
+      <br><br>
+
+      <!-- type="search": Like text but browsers may add a clear (✕) button.
+           Semantically tells the browser this field is for searching. -->
+      <label for="search1">Search (type="search"):</label>
+      <input type="search" id="search1" name="search1" placeholder="Search something...">
+      <br><br>
+
+      <!-- type="url": Validates that input starts with http:// or https:// -->
+      <label for="website">Website (type="url"):</label>
+      <input type="url" id="website" name="website" placeholder="https://example.com">
+      <br><br>
+
+      <!-- type="tel": For phone numbers. Does NOT validate format (varies by country).
+           On mobile, opens a numeric keypad. -->
+      <label for="phone">Phone (type="tel"):</label>
+      <input type="tel" id="phone" name="phone" placeholder="+91 9876543210">
+      <br><br>
+
+
+      <!-- ── NUMERIC INPUTS ──────────────────────────────────────── -->
+
+      <!-- type="number": Only allows numeric input. Shows up/down arrows.
+           min/max: sets allowed range. step: sets increment size. -->
+      <label for="age">Age (type="number"):</label>
+      <input type="number" id="age" name="age" min="1" max="120" step="1" placeholder="19">
+      <br><br>
+
+      <!-- type="range": A draggable slider. Good for ratings, volume, etc.
+           value: sets the default position of the slider. -->
+      <label for="volume">Volume (type="range"): </label>
+      <input type="range" id="volume" name="volume" min="0" max="100" step="5" value="50">
+      <br><br>
+
+
+      <!-- ── DATE & TIME INPUTS ──────────────────────────────────── -->
+
+      <!-- type="date": Opens a calendar date picker. Format: YYYY-MM-DD -->
+      <label for="datepicker">Date (type="date"):</label>
+      <input type="date" id="datepicker" name="dob">
+      <br><br>
+
+      <!-- type="time": Opens a time picker. Format: HH:MM (24-hour) -->
+      <label for="timepicker">Time (type="time"):</label>
+      <input type="time" id="timepicker" name="meettime">
+      <br><br>
+
+      <!-- type="datetime-local": Picks both date AND time, no timezone. -->
+      <label for="datetimepicker">Date + Time (type="datetime-local"):</label>
+      <input type="datetime-local" id="datetimepicker" name="datetime">
+      <br><br>
+
+      <!-- type="month": Lets user pick a month and year only (no specific day). -->
+      <label for="monthpicker">Month (type="month"):</label>
+      <input type="month" id="monthpicker" name="month">
+      <br><br>
+
+      <!-- type="week": Lets user pick a specific week number in a year. -->
+      <label for="weekpicker">Week (type="week"):</label>
+      <input type="week" id="weekpicker" name="week">
+      <br><br>
+
+
+      <!-- ── CHOICE INPUTS ───────────────────────────────────────── -->
+
+      <!-- type="checkbox": A tick box. User can select MULTIPLE options.
+           Each checkbox is independent. "checked" makes it pre-ticked. -->
+      <label>Skills (type="checkbox" — pick multiple):</label><br>
+      <input type="checkbox" id="html" name="skills" value="html">
+      <label for="html">HTML</label>
+      <input type="checkbox" id="css" name="skills" value="css" checked>
+      <label for="css">CSS (pre-checked)</label>
+      <input type="checkbox" id="js" name="skills" value="js">
+      <label for="js">JavaScript</label>
+      <br><br>
+
+      <!-- type="radio": A round button. Only ONE option can be selected
+           in a group. All radios in a group share the same "name". -->
+      <label>Gender (type="radio" — pick one):</label><br>
+      <input type="radio" id="male" name="gender" value="male">
+      <label for="male">Male</label>
+      <input type="radio" id="female" name="gender" value="female">
+      <label for="female">Female</label>
+      <input type="radio" id="other" name="gender" value="other">
+      <label for="other">Other</label>
+      <br><br>
+
+
+      <!-- ── SELECT DROPDOWNS ────────────────────────────────────── -->
+
+      <!-- <select>: A dropdown menu. User picks ONE option by default.
+           "name" is the key sent when the form is submitted.
+           NOTE: label's "for" must match select's "id" (case-sensitive!).
+           Bug fix: original had for="selector1" but id="Selector1" — mismatch. -->
+      <label for="dishes">Choose Dish (single select):</label>
+      <select name="dishes" id="dishes">
+        <option value="">-- Select a dish --</option>       <!-- empty default option -->
+        <option value="maggi">Maggi</option>
+        <option value="kurkure">Kurkure</option>
+        <option value="chips" selected>Chips (pre-selected)</option>
+      </select>
+      <br><br>
+
+      <!-- multiple: Allows selecting MULTIPLE options.
+           Hold Ctrl (Windows) or Cmd (Mac) to select more than one.
+           size: controls how many rows are visible at once. -->
+      <label for="cars">Choose Cars (multiple select — hold Ctrl/Cmd):</label>
+      <select name="cars" id="cars" multiple size="4">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="truck">Truck</option>
+        <option value="audi">Audi</option>
+      </select>
+      <br><br>
+
+      <!-- <optgroup>: Groups related options inside a dropdown with a label. -->
+      <label for="country">Country (with optgroup):</label>
+      <select name="country" id="country">
+        <optgroup label="Asia">
+          <option value="india">India</option>
+          <option value="japan">Japan</option>
+        </optgroup>
+        <optgroup label="Europe">
+          <option value="germany">Germany</option>
+          <option value="france">France</option>
+        </optgroup>
+      </select>
+      <br><br>
+
+
+      <!-- ── FILE & COLOR ────────────────────────────────────────── -->
+
+      <!-- type="file": Opens a file browser to upload a file.
+           accept: restricts which file types are allowed.
+           multiple: allows uploading more than one file at once. -->
+      <label for="upload">Upload File (type="file"):</label>
+      <input type="file" id="upload" name="upload" accept=".jpg,.png,.pdf" multiple>
+      <br><br>
+
+      <!-- type="color": Opens a color palette picker. Returns hex value (e.g. #ff0000). -->
+      <label for="favcolor">Favourite Color (type="color"):</label>
+      <input type="color" id="favcolor" name="favcolor" value="#4a90d9">
+      <br><br>
+
+
+      <!-- ── HIDDEN & READONLY ───────────────────────────────────── -->
+
+      <!-- type="hidden": Invisible to the user but submitted with the form.
+           Used to pass extra data like user IDs, tokens, or form version. -->
+      <input type="hidden" name="formVersion" value="v2.1">
+      <!-- Nothing visible above — that's intentional! -->
+
+      <!-- readonly: User can see the value but cannot change it.
+           disabled: User cannot see OR submit the value. -->
+      <label for="readonly1">Read-only field:</label>
+      <input type="text" id="readonly1" name="readonly1" value="Cannot edit this" readonly>
+      <br><br>
+
+      <label for="disabled1">Disabled field:</label>
+      <input type="text" id="disabled1" name="disabled1" value="Not submitted either" disabled>
+      <br><br>
+
+
+      <!-- ── TEXTAREA ────────────────────────────────────────────── -->
+
+      <!-- <textarea>: A multi-line text input. NOT a self-closing tag.
+           rows: visible height (in lines). cols: visible width (in characters).
+           resize: controlled via CSS (resize: none/both/vertical/horizontal). -->
+      <label for="area1">Message (textarea):</label><br>
+      <textarea name="area1" id="area1" cols="40" rows="5" placeholder="Write your message here..."></textarea>
+      <br><br>
+
+
+      <!-- ── BUTTONS ─────────────────────────────────────────────── -->
+
+      <!-- type="submit": Submits the form. -->
+      <button type="submit">Submit Form</button>
+
+      <!-- type="reset": Clears ALL fields back to their default values.
+           Use carefully — users can accidentally lose all their input! -->
+      <button type="reset">Reset / Clear All</button>
+
+      <!-- type="button": Does nothing by default. Used with JavaScript
+           for custom actions that don't need form submission. -->
+      <button type="button" onclick="alert('Button clicked! No form submitted.')">
+        Custom JS Button
+      </button>
+
+    </fieldset>
+  </form>
+
+</body>
+</html>
