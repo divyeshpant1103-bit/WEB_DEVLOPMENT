@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Application</title>
+</head>
+<body>
+
+  <h2>Job Application</h2>
+
+  <!-- ============================================================
+       FORM: JOB APPLICATION
+       action: not set here — in real projects, point it to your
+               server endpoint e.g. action="/submit-application"
+       method: "post" is correct for forms that send sensitive data
+               like resumes and personal info.
+  ============================================================ -->
+  <form action="#" method="post">
+
+
+    <!-- ── NAME ──────────────────────────────────────────────────
+         type="text"  → single-line plain text input
+         name="name"  → the key sent to the server on submission
+         required     → browser blocks submission if left empty
+         NOTE: "for" must match "id" exactly, case-sensitive.
+               Original had for="Name" + id="Name" — matched here.
+    ─────────────────────────────────────────────────────────── -->
+    <label for="name">Name:</label>
+    <br>
+    <input type="text" id="name" name="name" placeholder="Divyesh Pant" required>
+    <br><br>
+
+
+    <!-- ── EMAIL ─────────────────────────────────────────────────
+         type="email" → browser validates that input contains "@"
+                        and a domain (e.g. user@example.com).
+                        On mobile, opens email-optimized keyboard.
+    ─────────────────────────────────────────────────────────── -->
+    <label for="email">Email:</label>
+    <br>
+    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+    <br><br>
+
+
+    <!-- ── PHONE ─────────────────────────────────────────────────
+         type="tel"  → semantically marks this as a phone number.
+                       Does NOT enforce any format automatically
+                       (phone formats differ by country).
+                       On mobile, opens numeric/dial keypad.
+         pattern     → use a regex here if you want format validation
+                       e.g. pattern="[0-9]{10}" for 10-digit numbers.
+    ─────────────────────────────────────────────────────────── -->
+    <label for="ph">Phone:</label>
+    <br>
+    <input type="tel" id="ph" name="phone" placeholder="+91 9876543210">
+    <br><br>
+
+
+    <!-- ── RESUME UPLOAD ─────────────────────────────────────────
+         type="file"   → opens a file picker dialog.
+         accept        → restricts file types shown in the picker.
+                         ".pdf,.jpg" means only PDFs and JPG images.
+         multiple      → allows selecting more than one file at once.
+
+         BUG IN ORIGINAL: label had for="Cv" (capital C) but
+         input had id="cv" (lowercase) — case mismatch breaks the
+         label-input link. Fixed: both now use id="cv".
+    ─────────────────────────────────────────────────────────── -->
+    <label for="cv">Resume:</label>
+    <br>
+    <input type="file" id="cv" name="resume" accept=".pdf,.jpg" multiple>
+    <br><br>
+
+
+    <!-- ── EXPERIENCE ────────────────────────────────────────────
+         type="number" → only accepts numeric input, shows up/down arrows.
+         min="0"       → cannot go below 0 (no negative experience).
+         max="50"      → cannot go above 50.
+         step="1"      → increments by 1 (default, shown explicitly for clarity).
+
+         NOTE: label and input are on the same line here with no <br>
+         between them — that's fine, just a style choice.
+    ─────────────────────────────────────────────────────────── -->
+    <label for="exp">Experience (years):</label>
+    <input type="number" id="exp" name="experience" min="0" max="50" step="1" placeholder="0">
+    <br><br>
+
+
+    <!-- ── SKILLS (CHECKBOXES) ───────────────────────────────────
+         fieldset  → draws a visible box grouping related inputs.
+         legend    → the label shown at the top of the fieldset box.
+
+         BUG IN ORIGINAL: Skills used type="radio" — but radio buttons
+         only allow ONE selection in a group. For skills, a candidate
+         can know multiple technologies, so type="checkbox" is correct.
+
+         ANOTHER BUG: All three inputs shared id="check" — IDs must
+         be unique on a page. Duplicate IDs break label linking and
+         cause unexpected JS/CSS behavior. Fixed with unique IDs.
+
+         name="skills"  → all checkboxes share the same name so the
+                          server receives them as a list/array.
+         value          → what actually gets sent to the server when
+                          this checkbox is ticked. Without value, the
+                          server just receives "on" which is useless.
+    ─────────────────────────────────────────────────────────── -->
+    <fieldset>
+      <legend>Skills (select all that apply)</legend>
+
+      <input type="checkbox" id="skill-html" name="skills" value="html">
+      <label for="skill-html">HTML</label>
+      <br><br>
+
+      <input type="checkbox" id="skill-css" name="skills" value="css">
+      <label for="skill-css">CSS</label>
+      <br><br>
+
+      <input type="checkbox" id="skill-js" name="skills" value="javascript">
+      <label for="skill-js">JavaScript</label>
+
+    </fieldset>
+    <br>
+
+
+    <!-- ── HIGHEST EDUCATION (DROPDOWN) ─────────────────────────
+         <select>   → a dropdown menu, user picks exactly one option.
+         name="edu" → the key submitted to the server.
+         id="edu"   → must match label's for="edu".
+
+         <option value="..."> → "value" is what gets sent to the server.
+                                The text between tags is what the user sees.
+         selected   → pre-selects an option when the page loads.
+                      Good practice: add a blank default prompt option.
+    ─────────────────────────────────────────────────────────── -->
+    <label for="edu">Highest Education:</label>
+    <br>
+    <select name="edu" id="edu">
+      <!-- A blank first option prompts the user to actively choose -->
+      <option value="" disabled selected>-- Select your qualification --</option>
+      <option value="high_school">High School</option>
+      <option value="intermediate">Intermediate</option>
+      <option value="graduation">Graduation</option>
+    </select>
+    <br><br>
+
+
+    <!-- ── AVAILABILITY (RADIO BUTTONS) ─────────────────────────
+         type="radio"    → only ONE option can be selected in a group.
+         name="avl"      → ALL radio buttons in the same group MUST
+                           share the same "name". This is what links
+                           them — not the id. Without matching names,
+                           multiple radios can be selected at once.
+         value           → what gets sent to the server. Without value,
+                           the server just receives "on" — not useful.
+
+         BUG IN ORIGINAL: Labels came AFTER the inputs, and for="avl"
+         was the same for all three — only the first input would be
+         linked. Fixed: labels now have unique "for" values matching
+         each input's unique "id", and label is placed correctly.
+
+         ALSO: The original had label "Availability:" then radio, then
+         label "Full Time" then another radio — the order was mixed up.
+         Correct pattern: [radio input] then [its label], grouped cleanly.
+    ─────────────────────────────────────────────────────────── -->
+    <label>Availability:</label> <!-- No "for" needed — this is a group heading -->
+    <br>
+
+    <input type="radio" id="avl-fulltime" name="avl" value="full_time">
+    <label for="avl-fulltime">Full Time</label>
+    <br>
+
+    <input type="radio" id="avl-parttime" name="avl" value="part_time">
+    <label for="avl-parttime">Part Time</label>
+    <br><br>
+
+
+    <!-- ── ADDITIONAL COMMENTS (TEXTAREA) ───────────────────────
+         <textarea>    → a resizable multi-line text box.
+                         NOT self-closing — must have </textarea>.
+         rows="5"      → visible height in lines (original had 30 —
+                          that's very tall, adjusted to a normal size).
+         cols="50"     → visible width in characters.
+         placeholder   → hint text shown inside when empty.
+         name="comment"→ the key sent to server (was correct originally).
+
+         Note: Content between <textarea> tags is the default text.
+         Leave it empty for a blank field (as done here).
+    ─────────────────────────────────────────────────────────── -->
+    <label for="comment">Additional Comments:</label>
+    <br>
+    <textarea id="comment" name="comment" rows="5" cols="50"
+      placeholder="Tell us anything else relevant to your application..."></textarea>
+    <br><br>
+
+
+    <!-- ── SUBMIT BUTTON ─────────────────────────────────────────
+         <button> inside a <form> defaults to type="submit".
+         Best practice: always write type="submit" explicitly so
+         intent is clear and behavior is guaranteed across browsers.
+    ─────────────────────────────────────────────────────────── -->
+    <button type="submit">Submit Application</button>
+
+  </form>
+
+</body>
+</html>
