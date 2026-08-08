@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head >
-  <link rel="stylesheet" href="style.css">
+  <head>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/components.js" defer></script>
   <title>Divyesh| Frontend journey</title>
   </head>
   <body>
-    <nav class="navbar">
-      <span class="logo">Divyesh </span>
-      <ul class="nav-links">
-        <li> <a href="#">HOME</a> </li>
-        <li> <a href="#"> About</a> </li>
-        <li> <a href="#">Projects</a></li>
-        <li> <a href="#"> Contact</a></li>
-      </ul>
-    </nav> 
+    <site-nav logo="Divyesh" links="HOME=#, About=#, Projects=#, Contact=#"></site-nav> 
     <div class="card"> 
     <h1>Divyesh</h1>
      <h2>I am a Btech CSE student in graphic era deemed to be university</h2> 
@@ -25,10 +18,11 @@
       <span class="skill">C++</span>
       <span class="skill">Python</span>
       <span class="skill">HTML</span>
-      <spanclass="skill">CSS</span>
+      <span class="skill">CSS</span>
       <span class="skill">Git</span>
 </div>
     <br>
     </div>
-  </body> 
-</html
+    <site-footer></site-footer>
+  </body>
+</html>
