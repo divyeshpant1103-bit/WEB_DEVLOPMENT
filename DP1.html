@@ -2,18 +2,13 @@
 <html>
     <head>
        <title>Personal Bio Page</title>
+       <link rel="stylesheet" href="assets/css/site.css">
+       <script src="assets/js/components.js" defer></script>
     </head>
     <body>
-        <nav class="navbar">
-            <ul class="nav-links">
-                <li><a href="#introduction">about</a></li>
-                <li><a href="#Hobby">hobbies</a></li>
-                <li><a href="#form">BIO FORM</a></li>
-                <section id="go up"></section>
-            </ul>
-
-        </nav>
-        <div>
+        <span id="top"></span>
+        <site-nav links="about=#introduction, hobbies=#Hobby, BIO FORM=#form"></site-nav>
+        <div class="card">
         <h1><i>Personal Bio Page</i></h1>
         <img src="https://i.pravatar.cc/150" alt="My Photo" width="150" height="150">
         <h1>INTRODUCTION</h1>
@@ -39,32 +34,17 @@
             <li>PYTHON</li>
         </ol>
 
-        <h1>Contact Links</h1>
-        <a href="https://www.linkedin.com/in/divyesh-pant-69911a325/">linkedin</a>
-        <br>
-        <a href="https://github.com/divyeshpant1103-bit">github</a>
-        <br>
-        <a href="https://www.instagram.com/divyesh_pant/">instagram</a>
+        <site-footer></site-footer>
         <section id="form">
             <h2>BIO FORM</h2>
             <form>
-                <section>
-                    <label>NAME:</label>
-                    <input type="text" placeholder="Enter the name ">
-                    <br>
-                    <label>Gender</label>
-                    <input type="radio" name="gender" value="male">
-                    <label>Male</label>
-                    <input type="radio" name="gender" value="female">
-                    <label>Female</label>
-                    <br>
-                    <label>Age:</label>
-                    <input type="number" placeholder="Enter the age">
-                </section>
+                <form-field label="NAME:" type="text" name="name" placeholder="Enter the name"></form-field>
+                <choice-group legend="Gender" type="radio" name="gender"
+                    options="Male=male, Female=female"></choice-group>
+                <form-field label="Age:" type="number" name="age" placeholder="Enter the age" min="0"></form-field>
             </form>
         </section>
-             <li><a href="#go up">go up</a></li>
-        
+        <back-to-top text="go up"></back-to-top>
         </div>
 
     </body>

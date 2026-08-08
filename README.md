@@ -12,7 +12,9 @@ Development/
 ├── form.html           # HTML forms reference guide
 ├── table.html          # HTML tables reference guide
 ├── practice.html       # Practice page with navigation anchors
-├── style.css           # Stylesheet for index.html
+├── assets/
+│   ├── css/site.css        # Shared stylesheet for every page
+│   └── js/components.js    # Shared markup helpers (custom elements)
 └── README.md           # This file
 ```
 
@@ -64,8 +66,29 @@ Practice page demonstrating navigation anchors and internal linking.
 - "Go to Top" functionality
 - Multiple sections (programming, articles)
 
-### **style.css**
-Stylesheet for the portfolio homepage (index.html).
+### **assets/css/site.css**
+Single stylesheet shared by every page: navbar, card, skills, form rows and the
+`.data-table` class that replaces the repeated `border="1"` attribute in `table.html`.
+
+### **assets/js/components.js**
+Shared markup helpers implemented as custom elements, so the repeated navbar,
+contact footer, "back to top" link and label+input blocks live in one place.
+No build step — just open the HTML files in a browser.
+
+| Element | Replaces |
+|---------|----------|
+| `<site-nav logo="Divyesh" links="HOME=#, About=#about">` | hand-written `<nav class="navbar">` blocks |
+| `<site-footer>` | duplicated LinkedIn/GitHub/Instagram link lists |
+| `<back-to-top>` | "back to top" / "go up" anchors |
+| `<form-field label="Name:" type="text" name="name">` | `<label>` + `<input>` + `<br><br>` triples |
+| `<choice-group legend="Gender" type="radio" name="gender" options="Male=male, Female=female">` | fieldsets of radios/checkboxes with duplicated ids |
+
+`form-field` also supports `type="select"` (with `options` and `prompt`) and
+`type="textarea"`, and passes attributes like `placeholder`, `required`, `min`,
+`max`, `rows` and `accept` through to the control.
+
+`form.html`, `form2.html` and `table.html` deliberately keep their raw,
+heavily-commented markup — they are reference guides for the underlying HTML.
 
 ## 🎯 Learning Focus
 

@@ -1,0 +1,119 @@
+/* Shared stylesheet for every page in this repo.
+   Link it with: <link rel="stylesheet" href="assets/css/site.css"> */
+
+body {
+  font-family: system-ui, Arial, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0 1rem 2rem;
+  color: #222;
+}
+
+/* ---------- navigation (shared by index.html, DP1.html, practice.html) ---------- */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar .logo {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #0645ad;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- content blocks ---------- */
+
+.card {
+  max-width: 60rem;
+  margin: 1.5rem auto;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill {
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.site-footer {
+  border-top: 1px solid #ddd;
+  margin-top: 2rem;
+  padding-top: 1rem;
+}
+
+.site-footer .contact-links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.back-to-top {
+  display: inline-block;
+  margin: 1rem 0;
+}
+
+/* ---------- forms (shared by form*.html and DP1.html) ---------- */
+
+.form-row {
+  margin-bottom: 0.75rem;
+}
+
+.form-row label {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.form-row.inline label {
+  display: inline-block;
+  margin-right: 0.5rem;
+  margin-bottom: 0;
+}
+
+.choice-group {
+  margin-bottom: 0.75rem;
+}
+
+.choice-option {
+  margin-right: 1rem;
+}
+
+/* ---------- tables (replaces the repeated border="1" attribute) ---------- */
+
+.data-table {
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #666;
+  padding: 0.25rem 0.5rem;
+  text-align: left;
+}
